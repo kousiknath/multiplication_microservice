@@ -93,4 +93,23 @@ public class MultiplicationResultAttemptControllerTest {
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(attemptsResultList.write(attemptList).getJson());
     }
+
+    @Test
+    public void getMultiplicationAttemptByIdTest() throws Exception{
+        Multiplication multiplication = new Multiplication(30, 10);
+        User user = new User("Test");
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(
+                user, multiplication, 300, false);
+
+        given(multiplicationService.getAttemptById(1L)).willReturn(attempt);
+
+        MockHttpServletResponse response = mvc.perform(get("/results/1")
+                    .accept(MediaType.APPLICATION_JSON)
+                    .contentType(MediaType.APPLICATION_JSON))
+                .andReturn()
+                .getResponse();
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getContentAsString()).isEqualTo(jsonResponse.write(attempt).getJson());
+    }
 }
