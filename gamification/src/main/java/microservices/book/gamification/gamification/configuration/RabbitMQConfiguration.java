@@ -21,7 +21,7 @@ public class RabbitMQConfiguration implements RabbitListenerConfigurer {
     }
 
     @Bean
-    public Queue gamificationMultipkicationQueue(@Value("${multiplication.queue}") final String queueName){
+    public Queue gamificationMultiplicationQueue(@Value("${multiplication.queue}") final String queueName){
         return new Queue(queueName, true);
     }
 

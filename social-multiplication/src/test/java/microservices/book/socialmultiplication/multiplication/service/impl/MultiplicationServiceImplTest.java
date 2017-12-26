@@ -82,13 +82,6 @@ public class MultiplicationServiceImplTest {
     }
 
     @Test
-    public void checkAndGetCorrectAttempt(){
-        Multiplication multiplication = new Multiplication(50, 30);
-        User user = new User("Test");
-        MultiplicationResultAttempt mockAttempt = Mockito.mock(MultiplicationResultAttempt.class);
-    }
-
-    @Test
     public void retrieveStatsTest(){
         Multiplication multiplication1 = new Multiplication(50, 30);
         Multiplication multiplication2 = new Multiplication(20, 30);

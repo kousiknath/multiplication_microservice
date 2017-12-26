@@ -1,5 +1,7 @@
 package microservices.book.gamification.gamification.service.impl;
 
+import microservices.book.gamification.gamification.client.MultiplicationResultAttemptClient;
+import microservices.book.gamification.gamification.client.dto.MultiplicationResultAttempt;
 import microservices.book.gamification.gamification.domain.Badge;
 import microservices.book.gamification.gamification.domain.GameStats;
 import microservices.book.gamification.gamification.domain.ScoreCard;
@@ -24,11 +26,13 @@ public class GameServiceImplTest {
     private ScoreCardRepository scoreCardRepository;
     @Mock
     private BadgeCardRepository badgeCardRepository;
+    @Mock
+    private MultiplicationResultAttemptClient multiplicationResultAttemptClient;
 
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        gameService = new GameServiceImpl(scoreCardRepository, badgeCardRepository);
+        gameService = new GameServiceImpl(scoreCardRepository, badgeCardRepository, multiplicationResultAttemptClient);
     }
 
     @Test
@@ -42,6 +46,10 @@ public class GameServiceImplTest {
         given(scoreCardRepository.findByUserIdOrderByScoreTimestampDesc(userId)).willReturn(Lists.newArrayList(scoreCard));
         given(scoreCardRepository.getTotalScoreForUser(userId)).willReturn(scoreCard.getScore());
         given(badgeCardRepository.findByUserIdOrderByBadgeTimestampDesc(userId)).willReturn(Lists.newArrayList());
+
+        // The following is a dummy result which is not currently used anywhere in this test case.
+        given(multiplicationResultAttemptClient.retrieveMultiplicationResultAttempt(attemptId))
+                .willReturn(new MultiplicationResultAttempt("Test", 10, 20, 200, true));
 
         List<Badge> expectedBadges = Lists.newArrayList(Badge.FIRST_WON);
         GameStats expectedGameStats = new GameStats(userId, 10, expectedBadges);
@@ -64,6 +72,11 @@ public class GameServiceImplTest {
         given(scoreCardRepository.findByUserIdOrderByScoreTimestampDesc(userId)).willReturn(scoreCards);
         given(scoreCardRepository.getTotalScoreForUser(userId)).willReturn(150);
         given(badgeCardRepository.findByUserIdOrderByBadgeTimestampDesc(userId)).willReturn(Lists.newArrayList());
+
+        // The following is a dummy result which is not currently used anywhere in this test case.
+        given(multiplicationResultAttemptClient.retrieveMultiplicationResultAttempt(scoreCards.get(scoreCards.size() - 1).getAttemptId()))
+                .willReturn(new MultiplicationResultAttempt("Test", 10, 20, 200, true));
+
 
         List<Badge> expectedBadges = Lists.newArrayList(Badge.BRONZE_MULTIPLICATOR);
         GameStats expectedStats = new GameStats(userId, scoreCards.get(scoreCards.size() - 1).getScore(), expectedBadges);
