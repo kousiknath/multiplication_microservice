@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="6" tests="6" time="0">
+<testcase classname="Users are able to send their multiplication" name="The user sends a first right attempt and gets a badge" time="0">
+<skipped><![CDATA[When the user john_snow sends 1 right attempts..............................undefined
+Then the user gets a response indicating the attempt is right...............undefined
+And the user gets 10 points for the attempt.................................undefined
+And the user gets the FIRST_WON badge.......................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="Users are able to send their multiplication" name="The user sends a second right attempt and gets points only" time="0">
+<skipped><![CDATA[Given the user john_snow sends 1 right attempts.............................undefined
+And the user gets the FIRST_WON badge.......................................undefined
+When the user john_snow sends 1 right attempts..............................undefined
+Then the user gets a response indicating the attempt is right...............undefined
+And the user gets 10 points for the attempt.................................undefined
+And the user does not get any badge.........................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="Users are able to send their multiplication" name="The user sends a wrong attempt and gets nothing" time="0">
+<skipped><![CDATA[When the user john_snow sends 1 wrong attempts..............................undefined
+Then the user gets a response indicating the attempt is wrong...............undefined
+And the user gets 0 points for the attempt..................................undefined
+And the user does not get any badge.........................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="Users are able to send their multiplication" name="The user sends a right attempt after 9 right attempts and then gets a badge BRONZE_MULTIPLICATOR" time="0">
+<skipped><![CDATA[Given the user john_snow sends 9 right attempts.............................undefined
+When the user john_snow sends 1 right attempts..............................undefined
+Then the user gets a response indicating the attempt is right...............undefined
+And the user gets 10 points for the attempt.................................undefined
+And the user gets the BRONZE_MULTIPLICATOR badge............................undefined
+]]></skipped>
+</testcase>
+<testcase classname="Users are able to send their multiplication" name="The user sends a right attempt after 49 right attempts and then gets a badge SILVER_MULTIPLICATOR" time="0">
+<skipped><![CDATA[Given the user john_snow sends 49 right attempts............................undefined
+When the user john_snow sends 1 right attempts..............................undefined
+Then the user gets a response indicating the attempt is right...............undefined
+And the user gets 10 points for the attempt.................................undefined
+And the user gets the SILVER_MULTIPLICATOR badge............................undefined
+]]></skipped>
+</testcase>
+<testcase classname="Users are able to send their multiplication" name="The user sends a right attempt after 99 right attempts and then gets a badge GOLD_MULTIPLICATOR" time="0">
+<skipped><![CDATA[Given the user john_snow sends 99 right attempts............................undefined
+When the user john_snow sends 1 right attempts..............................undefined
+Then the user gets a response indicating the attempt is right...............undefined
+And the user gets 10 points for the attempt.................................undefined
+And the user gets the GOLD_MULTIPLICATOR badge..............................undefined
+]]></skipped>
+</testcase>
+</testsuite>
